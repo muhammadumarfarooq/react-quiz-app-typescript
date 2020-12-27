@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
+import { Difficulty, fetchQuizQuestions } from "./API";
 
-function App() {
+const TOTAL_QUESTIONS = 10;
+
+const App: React.FC = () => {
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [score, setScore] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [number, setNumber] = useState(0);
   
-  const handleStartQuiz = () => {
+  const handleStartQuiz = async () => {
     setGameOver(false);
     setLoading(true);
+    const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS,
+      Difficulty.EASY);
+    console.log(newQuestions);
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
   };
   return (
     <div className="App">
