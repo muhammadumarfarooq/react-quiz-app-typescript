@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [gameOver, setGameOver] = useState(true);
+  const [loading, setLoading] = useState(false);
+  
+  const handleStartQuiz = () => {
+    setGameOver(false);
+    setLoading(true);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Quiz App</h1>
+      {gameOver && <button onClick={handleStartQuiz}>Start</button>}
+      {!gameOver && <h2>Score: 0</h2>}
+      {loading && <p>Loading Questions...</p>}
     </div>
   );
 }
