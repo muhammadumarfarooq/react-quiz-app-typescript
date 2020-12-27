@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Difficulty, fetchQuizQuestions } from "./API";
+import QuestionCard from "./components/QuestionCard";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -29,6 +30,7 @@ const App: React.FC = () => {
       {gameOver && <button onClick={handleStartQuiz}>Start</button>}
       {!gameOver && <h2>Score: 0</h2>}
       {loading && <p>Loading Questions...</p>}
+      <QuestionCard totalQuestions={TOTAL_QUESTIONS}/>
     </div>
   );
 }
