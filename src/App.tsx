@@ -8,9 +8,9 @@ const App: React.FC = () => {
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [questionNumber, setQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
-  const [number, setNumber] = useState(0);
   
   const handleStartQuiz = async () => {
     setGameOver(false);
@@ -21,16 +21,32 @@ const App: React.FC = () => {
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswers([]);
-    setNumber(0);
+    setQuestionNumber(0);
     setLoading(false);
   };
+  
+  const handleNextQuestion = () => {
+    const nextQuestion = questionNumber + 1;
+    if ( nextQuestion === TOTAL_QUESTIONS ) {
+      setGameOver(true);
+    } else {
+      setQuestionNumber(nextQuestion);
+    }
+  };
+  
+  
   return (
     <div className="App">
       <h1>Quiz App</h1>
       {gameOver && <button onClick={handleStartQuiz}>Start</button>}
       {!gameOver && <h2>Score: 0</h2>}
       {loading && <p>Loading Questions...</p>}
-      <QuestionCard totalQuestions={TOTAL_QUESTIONS}/>
+      {!loading && !gameOver && <QuestionCard
+        totalQuestions={TOTAL_QUESTIONS}
+        question={questions[ questionNumber ].question}
+        answers={questions[questionNumber].answers}
+        handleNextQuestion={handleNextQuestion}
+      />}
     </div>
   );
 }

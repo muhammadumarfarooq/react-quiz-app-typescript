@@ -11,3 +11,4 @@ interface Question {
 
 //Functions
 type FetchQuizQuestions = (amount: number, difficulty: string) => Promise<Question[]>;
+type HandleNextQuestion = () => void
