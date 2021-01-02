@@ -13,8 +13,8 @@ interface Props {
 const QuestionCard: React.FC<Props> = ({ totalQuestions, question, answers, questionNumber, handleCheckAnswer, userAnswer }) => {
   return (
     <div className="question-card">
-      <p>{`${questionNumber}/${totalQuestions}`}</p>
-      <p>{question}</p>
+      <p className="question-card--question-count">{`${questionNumber}/${totalQuestions}`}</p>
+      <p className="question-card--question">{question}</p>
       <div className="question-card--btn-wrappers">
         {answers.map(answer =>
           <button

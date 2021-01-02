@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px;
+  background: linear-gradient(
+          -1.40000000000001deg,
+          #363568 0%,
+          #353466 4.14%,
+          #24263e 100%
+  );
+  border-bottom: 4px solid #758cc6;
+}
+
+.navbar--title,
+.navbar--score {
+  color: #fff;
+  margin: 0;
+}

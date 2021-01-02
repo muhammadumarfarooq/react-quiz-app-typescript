@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Difficulty, fetchQuizQuestions } from "./API";
 import QuestionCard from "./components/QuestionCard";
 import QuizSummary from "./components/QuizSummary";
+import Navbar from "./components/Navbar";
+import './components/styles/app.css';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -49,9 +51,9 @@ const App: React.FC = () => {
   
   return (
     <div className="App">
-      <h1>Quiz App</h1>
-      {( gameOver || userAnswers.length === TOTAL_QUESTIONS ) && <button onClick={handleStartQuiz}>Start</button>}
-      {!gameOver && <h2>Score: {score}</h2>}
+      <Navbar gameOver={gameOver} score={score}/>
+      {( gameOver || userAnswers.length === TOTAL_QUESTIONS ) &&
+      <button className="game--btn" onClick={handleStartQuiz}>Start</button>}
       {loading && <p>Loading Questions...</p>}
       {!loading && !gameOver && userAnswers.length !== TOTAL_QUESTIONS && <QuestionCard
         totalQuestions={TOTAL_QUESTIONS}
@@ -63,7 +65,7 @@ const App: React.FC = () => {
       />}
       {userAnswers.length === TOTAL_QUESTIONS && <QuizSummary userAnswers={userAnswers}/>}
       {!gameOver && !loading && userAnswers[ questionNumber ] && questionNumber !== TOTAL_QUESTIONS - 1 &&
-      <button onClick={handleNextQuestion}>Next Question</button>}
+      <button className="game--btn" onClick={handleNextQuestion}>Next Question</button>}
     </div>
   );
 }
