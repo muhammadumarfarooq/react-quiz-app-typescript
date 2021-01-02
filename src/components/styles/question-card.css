@@ -18,3 +18,13 @@
 .answer-btn {
   margin-bottom: 1rem;
 }
+
+.answer-btn.incorrect {
+  background: red;
+  color: #fff;
+}
+
+.answer-btn.correct {
+  background: green;
+  color: #fff;
+}

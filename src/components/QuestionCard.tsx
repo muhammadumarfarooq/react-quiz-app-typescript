@@ -4,27 +4,32 @@ import './styles/question-card.css';
 interface Props {
   totalQuestions: number
   question: string
-  handleNextQuestion: HandleNextQuestion
   answers: string[]
+  questionNumber: number
+  handleCheckAnswer: HandleCheckAnswer
+  userAnswer: AnswerObject
 }
 
-const QuestionCard: React.FC<Props> = ({ totalQuestions, question, handleNextQuestion, answers }) => {
-  console.log(answers);
+const QuestionCard: React.FC<Props> = ({ totalQuestions, question, answers, questionNumber, handleCheckAnswer, userAnswer }) => {
   return (
     <div className="question-card">
-      <p>{`${1}/${totalQuestions}`}</p>
+      <p>{`${questionNumber}/${totalQuestions}`}</p>
       <p>{question}</p>
       <div className="question-card--btn-wrappers">
         {
           answers.map(answer =>
-            <button key={answer} className="answer-btn">{answer}</button>
+            <button
+              key={answer}
+              onClick={() => handleCheckAnswer(answer)}
+              // userClicked={userAnswer?.answer === answer}
+              className={userAnswer?.correctAnswer === answer ? "answer-btn correct" : userAnswer?.answer === answer ? "answer-btn incorrect" : "answer-btn"}
+            >
+              {answer}
+            </button>
           )
         }
       
       </div>
-      
-      <button onClick={handleNextQuestion}>Next Question</button>
-    
     </div>
   );
 }

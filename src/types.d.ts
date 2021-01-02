@@ -8,7 +8,13 @@ interface Question {
   type: string;
 }
 
+interface AnswerObject {
+  question: string
+  answer: string
+  isCorrecrAnswer: boolean
+  correctAnswer: string
+}
 
 //Functions
 type FetchQuizQuestions = (amount: number, difficulty: string) => Promise<Question[]>;
-type HandleNextQuestion = () => void
+type HandleCheckAnswer = (answer: string) => void
