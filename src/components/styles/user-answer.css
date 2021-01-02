@@ -1,0 +1,13 @@
+.user-answer {
+  display: flex;
+  align-items: center;
+}
+
+
+.correct {
+  color: green;
+}
+
+.wrong {
+  color: red;
+}

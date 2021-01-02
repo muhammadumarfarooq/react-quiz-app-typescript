@@ -53,7 +53,7 @@ const App: React.FC = () => {
       {( gameOver || userAnswers.length === TOTAL_QUESTIONS ) && <button onClick={handleStartQuiz}>Start</button>}
       {!gameOver && <h2>Score: {score}</h2>}
       {loading && <p>Loading Questions...</p>}
-      {!loading && !gameOver && <QuestionCard
+      {!loading && !gameOver && userAnswers.length !== TOTAL_QUESTIONS && <QuestionCard
         totalQuestions={TOTAL_QUESTIONS}
         question={questions[ questionNumber ].question}
         answers={questions[ questionNumber ].answers}
@@ -61,7 +61,7 @@ const App: React.FC = () => {
         questionNumber={questionNumber + 1}
         handleCheckAnswer={handleCheckAnswer}
       />}
-      {questionNumber + 1 === TOTAL_QUESTIONS && <QuizSummary userAnswers={userAnswers}/>}
+      {userAnswers.length === TOTAL_QUESTIONS && <QuizSummary userAnswers={userAnswers}/>}
       {!gameOver && !loading && userAnswers[ questionNumber ] && questionNumber !== TOTAL_QUESTIONS - 1 &&
       <button onClick={handleNextQuestion}>Next Question</button>}
     </div>

@@ -16,19 +16,15 @@ const QuestionCard: React.FC<Props> = ({ totalQuestions, question, answers, ques
       <p>{`${questionNumber}/${totalQuestions}`}</p>
       <p>{question}</p>
       <div className="question-card--btn-wrappers">
-        {
-          answers.map(answer =>
-            <button
-              key={answer}
-              onClick={() => handleCheckAnswer(answer)}
-              // userClicked={userAnswer?.answer === answer}
-              className={userAnswer?.correctAnswer === answer ? "answer-btn correct" : userAnswer?.answer === answer ? "answer-btn incorrect" : "answer-btn"}
-            >
-              {answer}
-            </button>
-          )
-        }
-      
+        {answers.map(answer =>
+          <button
+            disabled={Boolean(userAnswer)}
+            key={answer}
+            onClick={() => handleCheckAnswer(answer)}
+            className={userAnswer?.correctAnswer === answer ? "answer-btn correct" : userAnswer?.answer === answer ? "answer-btn incorrect" : "answer-btn"}
+          >
+            {answer}
+          </button>)}
       </div>
     </div>
   );
