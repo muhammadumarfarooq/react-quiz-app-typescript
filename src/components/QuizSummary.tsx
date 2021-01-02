@@ -9,6 +9,7 @@ interface Props {
 const QuizSummary: React.FC<Props> = ({ userAnswers }) => {
   return (
     <div className="quiz-summary">
+      <p className="question-summary">Summary</p>
       {userAnswers.map((answer, index) => <UserAnswer key={answer.question} index={index} userAnswer={answer}/>)}
     </div>
   );

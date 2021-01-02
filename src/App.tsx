@@ -63,6 +63,7 @@ const App: React.FC = () => {
         questionNumber={questionNumber + 1}
         handleCheckAnswer={handleCheckAnswer}
       />}
+      
       {userAnswers.length === TOTAL_QUESTIONS && <QuizSummary userAnswers={userAnswers}/>}
       {!gameOver && !loading && userAnswers[ questionNumber ] && questionNumber !== TOTAL_QUESTIONS - 1 &&
       <button className="game--btn" onClick={handleNextQuestion}>Next Question</button>}

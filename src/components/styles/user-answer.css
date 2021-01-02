@@ -1,13 +1,30 @@
 .user-answer {
   display: flex;
   align-items: center;
+  max-width: 900px;
+  margin: 0 30px;
 }
 
+.question-summary{
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.question-number{
+  margin-right: 10px;
+}
 
 .correct {
   color: green;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
 .wrong {
   color: red;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
 }
